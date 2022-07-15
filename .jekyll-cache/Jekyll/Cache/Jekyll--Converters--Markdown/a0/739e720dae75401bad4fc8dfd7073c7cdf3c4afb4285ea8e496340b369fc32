@@ -1,0 +1,27 @@
+I"0<h1 id="after-i-add-google-login-function-all-of-test-codes-didnt-work">After I add google login function, all of test codes didn’t work.</h1>
+
+<h2 id="problems-and-solution">Problems and Solution</h2>
+<ol>
+  <li>
+    <ul>
+      <li>I wrote in build.gradle as below.</li>
+    </ul>
+
+    <p><code class="language-plaintext highlighter-rouge">compleOnly('org.springframework boot:spring-boot-starter-oauth2-client')</code></p>
+
+    <ul>
+      <li>
+        <p>Solution:  chage it to</p>
+
+        <p><code class="language-plaintext highlighter-rouge">implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'</code></p>
+      </li>
+    </ul>
+  </li>
+  <li></li>
+</ol>
+
+<p><img src="/images/External_Libraries.jpg" alt="_config.yml" /></p>
+
+<p><img src="/images/session.jpg" alt="_config.yml" /></p>
+
+:ET
