@@ -3,6 +3,7 @@ layout: post
 title: Corona-Board-2nd
 categories : Corona-Board-Nodejs
 ---
+
 require( ) : 다른 파일에 존재하는 코드를 불러옵니다.
 module.exports  : 현재 파일에 있는 내용 중 다른 파일에 보여주고 싶은 내용만 노출할 수 있도록 해줍니다
 
