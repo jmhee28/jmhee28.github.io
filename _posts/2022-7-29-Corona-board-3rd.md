@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Corona-Board-3rd
-categories : Corona-Board-Nodejs
+categories : Corona-Board-Backend
 ---
 # 웹페이지 크롤링을 위한 배경 지식
 ## 1.  웹페이지와 DOM 

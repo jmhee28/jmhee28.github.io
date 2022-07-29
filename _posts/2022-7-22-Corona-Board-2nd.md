@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Corona-Board-2nd
-categories : Corona-Board-Nodejs
+categories : Corona-Board-Backend
 ---
 
 require( ) : 다른 파일에 존재하는 코드를 불러옵니다.
