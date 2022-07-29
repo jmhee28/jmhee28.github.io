@@ -18,8 +18,17 @@ categories : Corona-Board-Nodejs
 - 최상위 노드node와 여러 단계의 자식 노드들로 구성된 트리tree 구조
 - 원하는 노드를 쉽게 찾아서 수정/삭제하거나 원하는 위치에 새로운 노드를 추가할 수 있습니다.   
 
+
+
 ![_config.yml]({{ site.baseurl }}/images/DOM_tree.jpg)   
 
+document 객체 : 현재 로드된 웹페이지를 나타내고, 현재 보고 있는 웹페이지의 DOM 트리tree의 최상위 요소
 
 
 웹브라우저는 HTML을 DOM으로 변환한 후, CSS로 설정한 스타일을 DOM의 각 노드에 적용 하여 사용자에게 보여줍니다. 이것이 우리가 보는 웹페이지 화면입니다. 
+
+### DOM을 이용하여 해당 요소 서브의 요소들을 찾을 수 있게 해주는 함수
+요소 객체에는 DOM을 이용하여 해당 요소 서브의 요소들을 찾을 수 있게 해주는 다양한 함수 들이 구현되어 있습니다.
+- ```getElementsByTagName()```  : 태그 이름으로 찾기 
+- ```getElementsByClassName()``` :  클래스 속성값으로 찾기
+- ```getElementById()``` : 문서 전체에 대하여 고유한 id값을 가진 요소를 찾기. (document 객체에서만 호출이 가능합니다.)
