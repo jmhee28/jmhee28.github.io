@@ -1,0 +1,44 @@
+I"�<h1 id="css-셀렉터-문법">CSS 셀렉터 문법</h1>
+
+<h2 id="기본-셀렉터">기본 셀렉터</h2>
+
+<p>기본적인 CSS 셀렉터를 이용하면 명시한 태그, id, 클래스, 속성을 만족하는 요소들을 찾는 기능을 제공합니다.</p>
+
+<h2 id="tag-selector">TAG Selector</h2>
+
+<p>태그 셀렉터type selector는 태그 이름을 그대로 적어주면 해당 태그에 해당하는 요소를 검색합니다.</p>
+
+<p>EX)</p>
+<ul>
+  <li>h1 태그에 해당하는 요소 검색<br />
+ <code class="language-plaintext highlighter-rouge">document.querySelectorAll('h1');</code></li>
+</ul>
+
+<h2 id="id-selector">ID Selector</h2>
+
+<p>ID selector는 찾고자 하는 id 속성값 앞에 # 기호를 붙여주어 검색합니다(HTML 문서 내 에서 id값은 항상 고유하기 때문에 하나만 존재합니다).</p>
+
+<p>EX)</p>
+<ul>
+  <li>id=”country-title”인 요소 검색<br />
+ <code class="language-plaintext highlighter-rouge">document.querySelectorAll('#country-title');</code></li>
+</ul>
+
+<h2 id="class-selector">Class Selector</h2>
+
+<p>클래스 셀렉터class selector는 찾고자 하는 클래스 속성값의 앞에 . 기호를 붙여 검색합니다.</p>
+
+<p>EX)</p>
+<ul>
+  <li>class=”slide” 인 요소 검색<br />
+ <code class="language-plaintext highlighter-rouge">document.querySelectorAll('.slide')</code></li>
+</ul>
+
+<h2 id="attribute-selector">Attribute Selector</h2>
+<p>Attribute selector는 찾고자 하는 속성 이름을 [ ]로 묶어 검색합니다. 해당 속성의 값도 지 정하여 검색할 수 있습니다. 
+ EX)</p>
+<ul>
+  <li>“type”이라는 속성을 가진 요소 검색<br />
+ <code class="language-plaintext highlighter-rouge">document.querySelectorAll('[type]')</code></li>
+</ul>
+:ET
