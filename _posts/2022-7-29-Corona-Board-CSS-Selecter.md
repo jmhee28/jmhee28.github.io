@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Corona-Board-CSS-Selecter
-categories : Corona-Board-Nodejs
+categories : Corona-Board-Backend
 ---
 # CSS 셀렉터 문법
 
