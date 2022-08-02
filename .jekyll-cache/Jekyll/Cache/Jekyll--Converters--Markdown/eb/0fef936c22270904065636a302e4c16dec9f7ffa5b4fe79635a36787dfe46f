@@ -1,0 +1,23 @@
+I"�<h1 id="개츠비-프로젝트-설치">개츠비 프로젝트 설치</h1>
+
+<p><code class="language-plaintext highlighter-rouge">$ npm install -g gatsby-cli@3.10.0</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">$ gatsby new coronaboard-web \ https://github.com/atsbyjs/gatsby-starter-hello-world</code></p>
+
+<p><img src="/images/gats_pro.jpg" alt="_config.yml" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">$ cd coronaboard-web</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">$ gatsby develop</code></p>
+
+<p>HMR Hot Module Reload: 코드 변경이 발견될 때마다 다시 빌드 한 후 기존에 보여주던 페이지를 자동 으로 새로고침해주는 기능</p>
+
+<h2 id="개츠비-프로젝트-구조">개츠비 프로젝트 구조</h2>
+
+<p><img src="/images/gats_struc.jpg" alt="_config.yml" /></p>
+
+<p><strong>- [.cache]</strong></p>
+<ul>
+  <li>개츠비 빌드 과정에서 생성되는 산출물을 캐싱해두는 디렉터리</li>
+</ul>
+:ET

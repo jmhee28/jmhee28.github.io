@@ -1,0 +1,78 @@
+I"Z<h1 id="개츠비-프로젝트-설치">개츠비 프로젝트 설치</h1>
+
+<p><code class="language-plaintext highlighter-rouge">$ npm install -g gatsby-cli@3.10.0</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">$ gatsby new coronaboard-web \ https://github.com/atsbyjs/gatsby-starter-hello-world</code></p>
+
+<p><img src="/images/gats_pro.jpg" alt="_config.yml" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">$ cd coronaboard-web</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">$ gatsby develop</code></p>
+
+<p>HMR Hot Module Reload: 코드 변경이 발견될 때마다 다시 빌드 한 후 기존에 보여주던 페이지를 자동 으로 새로고침해주는 기능</p>
+
+<h2 id="개츠비-프로젝트-구조">개츠비 프로젝트 구조</h2>
+
+<p><img src="/images/gats_struc.jpg" alt="_config.yml" /></p>
+
+<p><strong>[.cache]</strong></p>
+<ul>
+  <li>
+    <p>개츠비 빌드 과정에서 생성되는 산출물을 캐싱해두는 디렉터리</p>
+  </li>
+  <li>
+    <p>이전 빌드 의 산출물을 캐싱하여 다음번 빌드를 더 빠르게 해주는 역할</p>
+  </li>
+  <li>
+    <p>직접 수정할 일은 없 으나, 혹시 캐시로 인해 변경된 데이터가 제대로 나오지 않는 등의 문제가 발생하면 gatsby clean 명령으로 삭제</p>
+  </li>
+</ul>
+
+<p><strong>[public]</strong></p>
+<ul>
+  <li>
+    <p>빌드가 완료된 정적 웹사이트의 결과물이 저장되는 디렉터리</p>
+  </li>
+  <li>
+    <p>나중에 gatsby build 명령으로 프로덕션용 정적 웹사이트 빌드한 후, 이 디렉터리 안의 모든 파일 을 파일 서버나 AWS S3 등에 업로드하여 사용</p>
+  </li>
+  <li>
+    <p>gatsby clean 명 령으로 깨끗이 청소할 수 있음.</p>
+  </li>
+</ul>
+
+<p><strong>[src/pages]</strong></p>
+<ul>
+  <li>
+    <p>정적 웹사이트 빌드에 사용할 소스 파일들이 담겨 있는 디렉터리</p>
+  </li>
+  <li>
+    <p>이 위 치에 존재하는 파일 하나가 정적 웹사이트의 웹페이지 하나와 1:1 매핑</p>
+  </li>
+</ul>
+
+<p><strong>[static]</strong></p>
+<ul>
+  <li>
+    <p>웹사이트에 사용될 정적 자원(이미지, 폰트 등)을 넣어둡니다.</p>
+  </li>
+  <li>
+    <p>이 디렉터리에 존재하는 파일들은 빌드 시 [public] 디렉터리로 복사됩니다.</p>
+  </li>
+</ul>
+
+<p><strong>gatsby-config.js</strong></p>
+<ul>
+  <li>개츠비의 설정 파일입니다.</li>
+  <li>개츠비 빌드 시 플러그인을 추가하고 설정할 수 있으며, 사이트 제목, 설명, URL 등 사이트의 메타 정보 역시 여기에 정의</li>
+</ul>
+
+<p><strong>.prettierrc</strong></p>
+<ul>
+  <li>자바스크립트 코드 포매팅 도구인 프리 티어의 설정 파일</li>
+</ul>
+
+<h2 id="프리-티어-설정">프리 티어 설정</h2>
+<p>Prettier:  자바스크립트 코드를 자동으로 포매팅해주는 도구</p>
+:ET
