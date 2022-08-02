@@ -1,0 +1,15 @@
+I"ò<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">gloval var</span><span class="dl">"</span>
+
+<span class="kd">function</span> <span class="nx">home</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">homevar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">homevar</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      
+    <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">home</span><span class="p">();</span>
+</code></pre></div></div>
+:ET
