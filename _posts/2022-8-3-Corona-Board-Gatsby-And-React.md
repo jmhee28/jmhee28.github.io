@@ -2,6 +2,7 @@
 layout: post
 title: Corona-Board-Gatsby-And-React
 categories : Corona-Board-Frontend
+published: true
 ---
 # 리액트
 
@@ -80,4 +81,4 @@ categories : Corona-Board-Frontend
  ![_config.yml]({{ site.baseurl }}/images/DataLayer.jpg)
 
 ## unstructured data 비구조화된 데이터
-개츠비의 Node API를 이용하면 데이터 소스로부터 데이터를 원하는 방식 으로 가져와서 원하는 페이지에 손쉽게 직접 주입할 수 있습니다. 이렇게 데이터 레이어를 사용하지 않는 방식을 비구조화된 데이터unstructured data 방식이라고도 합니다.
+개츠비의 Node API를 이용하면 데이터 소스로부터 데이터를 원하는 방식 으로 가져와서 원하는 페이지에 손쉽게 직접 주입할 수 있습니다. 이렇게 데이터 레이어를 사용하지 않는 방식을 비구조화된 데이터unstructured data 방식이라고도 합니
