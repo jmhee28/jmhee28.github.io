@@ -6,11 +6,11 @@ categories : Corona-Board-Backend
 # 기본적인 크롤러 만들어보기
 ## 개발 환경 설정
 
-<span style='background-color: #f6f8fa'> ``` $ mkdir crawler $ cd crawler ```  </span>
+ ``` $ mkdir crawler $ cd crawler ``` 
 
-<span style='background-color: #f6f8fa'>``` $ npm init -y ```   </span>
+``` $ npm init -y ```  
 
-<span style='background-color: #f6f8fa'>``` $ npm install axios@0.21.1 cheerio@1.0.0-rc.9 puppeteer@9.1.1 lodash@4.17.20 date-fns@2.21.1 date-fns-tz@1.1.4```   </span>
+``` $ npm install axios@0.21.1 cheerio@1.0.0-rc.9 puppeteer@9.1.1 lodash@4.17.20 date-fns@2.21.1 date-fns-tz@1.1.4``` 
 
 
 - axios : HTTP 호출을 더 편리하게 해주는 HTTP 클라이언트 라이브러리입니다. 이를 이 용하여 웹브라우저가 특정 URL로부터 웹페이지 HTML을 로드하듯이 크롤러에서도 특정 URL의 HTML을 로드할 수 있습니다.   
