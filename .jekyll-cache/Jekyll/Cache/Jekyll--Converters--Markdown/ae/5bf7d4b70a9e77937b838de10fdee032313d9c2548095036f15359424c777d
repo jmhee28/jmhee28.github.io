@@ -1,0 +1,80 @@
+I"ñ)<h2 id="1-first-make-postsearchdto">1. First, Make PostSearchDto</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PostSearchDto</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">contents</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">author</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">PostSearchDto</span><span class="o">(</span><span class="nc">PostEntity</span> <span class="n">entity</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getTitle</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">contents</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContents</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">author</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2-repository">2. Repository</h2>
+<ul>
+  <li>I wrote Query in postRepository</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">PostRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">PostEntity</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT p FROM PostEntity p WHERE p.title = :title ORDER BY p.id ASC"</span><span class="o">)</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PostEntity</span><span class="o">&gt;</span> <span class="nf">findByTitle</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">"title"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">title</span><span class="o">);</span>
+
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT p FROM PostEntity p WHERE p.contents LIKE %:contents% ORDER BY p.id ASC"</span><span class="o">)</span> 
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PostEntity</span><span class="o">&gt;</span> <span class="nf">findByContentsContaining</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">"contents"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">contents</span><span class="o">);</span>
+
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT p FROM PostEntity p WHERE p.author = :author ORDER BY p.id ASC"</span><span class="o">)</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PostEntity</span><span class="o">&gt;</span> <span class="nf">findByAuthor</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">"author"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">author</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>LIKE</strong>
+    <ul>
+      <li>to know wheter it contains the contents</li>
+      <li>Parameter should be start and end with <strong>%</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="service">Service</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Transactional</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PostSearchDto</span><span class="o">&gt;</span> <span class="nf">getSearchList</span><span class="o">(</span><span class="nc">String</span> <span class="n">type</span><span class="o">,</span> <span class="nc">String</span> <span class="n">keyword</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"title"</span><span class="o">)==</span><span class="kc">true</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">postRepository</span><span class="o">.</span><span class="na">findByTitle</span><span class="o">(</span><span class="n">keyword</span><span class="o">).</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">PostSearchDto:</span><span class="o">:</span><span class="k">new</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"contents"</span><span class="o">)==</span><span class="kc">true</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">postRepository</span><span class="o">.</span><span class="na">findByContentsContaining</span><span class="o">(</span><span class="n">keyword</span><span class="o">).</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">PostSearchDto:</span><span class="o">:</span><span class="k">new</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="c1">// author</span>
+        <span class="o">{</span>
+          <span class="k">return</span>  <span class="n">postRepository</span><span class="o">.</span><span class="na">findByAuthor</span><span class="o">(</span><span class="n">keyword</span><span class="o">).</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">PostSearchDto:</span><span class="o">:</span><span class="k">new</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="controller">Controller</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/showSearchList/{type}/{keyword}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getSearchList</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="nc">String</span> <span class="n">type</span><span class="o">,</span>
+                                <span class="nd">@PathVariable</span> <span class="nc">String</span> <span class="n">keyword</span><span class="o">,</span><span class="nd">@LoginUser</span> <span class="nc">SessionUser</span> <span class="n">user</span><span class="o">,</span>
+                                             <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span><span class="kd">throws</span> <span class="nc">Exception</span><span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">user</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"userName"</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"type : key "</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="n">keyword</span><span class="o">);</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PostSearchDto</span><span class="o">&gt;</span> <span class="n">plist</span> <span class="o">=</span> <span class="n">postService</span><span class="o">.</span><span class="na">getSearchList</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">keyword</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"SearchList"</span><span class="o">,</span> <span class="n">plist</span><span class="o">);</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"plist : {}"</span><span class="o">,</span> <span class="n">plist</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">count</span><span class="o">()</span> <span class="o">);</span>
+        <span class="k">return</span> <span class="s">"showSearchList"</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,4 @@
+I"x<h2 id="1-first-make-postsearchdto">1. First, Make PostSearchDto</h2>
+<p>~~~ java
+public class PostSearchDto {</p>
+:ET

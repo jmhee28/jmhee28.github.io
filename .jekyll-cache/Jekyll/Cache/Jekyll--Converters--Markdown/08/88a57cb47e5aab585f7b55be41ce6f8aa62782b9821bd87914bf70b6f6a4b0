@@ -1,0 +1,35 @@
+I"ç<h2 id="1-first-make-postsearchdto">1. First, Make PostSearchDto</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PostSearchDto</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">contents</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">author</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">PostSearchDto</span><span class="o">(</span><span class="nc">PostEntity</span> <span class="n">entity</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getTitle</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">contents</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContents</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">author</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2-repository">2. Repository</h2>
+<ul>
+  <li>I wrote Query in postRepository
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">PostRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">PostEntity</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT p FROM PostEntity p WHERE p.title = :title ORDER BY p.id ASC"</span><span class="o">)</span>
+  <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PostEntity</span><span class="o">&gt;</span> <span class="nf">findByTitle</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">"title"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">title</span><span class="o">);</span>
+
+  <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT p FROM PostEntity p WHERE p.contents LIKE %:contents% ORDER BY p.id ASC"</span><span class="o">)</span>
+  <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PostEntity</span><span class="o">&gt;</span> <span class="nf">findByContentsContaining</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">"contents"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">contents</span><span class="o">);</span>
+
+  <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT p FROM PostEntity p WHERE p.author = :author ORDER BY p.id ASC"</span><span class="o">)</span>
+  <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PostEntity</span><span class="o">&gt;</span> <span class="nf">findByAuthor</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">"author"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">author</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+:ET
